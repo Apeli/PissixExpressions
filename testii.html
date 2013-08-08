@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Testii</title>
+	<script type="text/javascript" src="PissixExpressions.js"></script>
+</head>
+<body>
+	<script>
+		var tester = PissixEx()
+            .laininStartti()
+            .sit( "http" )
+            .kait( "s" )
+            .sit( "://" )
+            .kait( "www." )
+            .ihaSamaPaizi( " " )
+            .laininEndi();
+
+// Create an example URL
+var testMe = "https://www.lidl.fi";
+
+// Use RegExp object's native test() function
+if( tester.test( testMe ) ) alert( "Jesssss siideriiii!"); // This output will fire
+else alert( "Vittu ei oo papereit" );
+
+
+// Create a test string
+var replaceMe = "Onx sul heittää yhtää spadduu?";
+
+// Create an expression that seeks for word "spadduu"
+var expression = PissixEx().eti( "spadduu" );
+
+// Execute the expression like a normal RegExp object
+var result = replaceMe.replace( expression, "ESsii" );
+
+alert( result ); // Outputs "Onx sul heittää yhtää ESsii?"
+
+
+var result = PissixEx().eti( "mutsi" ).vaiha( "Meiän mutsi skitsoo iha vitusti", "faija" );
+alert( result ); // Outputs "Meiän faija skitsoo iha vitusti"
+
+	</script>
+</body>
+</html>
