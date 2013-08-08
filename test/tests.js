@@ -51,7 +51,7 @@ test( "rivinEga", function() {
 } );
 
 test( "rivinViga", function() {
-    var testRegex = PissixEx().find( "a" ).rivinViga();
+    var testRegex = PissixEx().eti( "a" ).rivinViga();
     var testString;
 
     testString = "a";

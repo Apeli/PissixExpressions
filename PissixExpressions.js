@@ -113,7 +113,7 @@
         // of the chain.
         // Original: find
         eti : function( value ) {
-            return( this.then( value ) );
+            return( this.sit( value ) );
         },
         
         // Maybe is used to add values with ?
@@ -178,7 +178,7 @@
         // And a shorthand for html-minded
         //Original: br
         breikki : function() {
-            return this.lineBreak();
+            return this.uusRivi();
         },
         
         // Tab (duh?)
@@ -243,7 +243,7 @@
             return( this );
         },
         //Original: removeModifier
-        exäSäätö : function( modifier ) {
+        endaaSäätö : function( modifier ) {
             this._modifiers = this._modifiers.replace( modifier, "" );
             this.add("");
             return( this );
@@ -253,8 +253,8 @@
         //Original: withAnyCase
         ihaSamaMikäKoko : function( enable ) {
             
-            if(enable !== false) this.addModifier( "i" );
-            else this.removeModifier( "i" );
+            if(enable !== false) this.uusSäätö( "i" );
+            else this.endaaSäätö( "i" );
             
             this.add( "" );
             return( this );
@@ -267,8 +267,8 @@
         // Original: stopAtFirst
         ekastStoppi : function( enable ) {
             
-            if(enable !== false) this.removeModifier( "g" );
-            else this.addModifier( "g" );
+            if(enable !== false) this.endaaSäätö( "g" );
+            else this.uusSäätö( "g" );
             
             this.add( "" );
             return( this );
@@ -279,8 +279,8 @@
         // Original: searchOneLine
         yhenRivinSöörtsi : function( enable ) {
             
-            if(enable !== false) this.removeModifier( "m" );
-            else this.addModifier( "m" );
+            if(enable !== false) this.endaaSäätö( "m" );
+            else this.uusSäätö( "m" );
             
             this.add( "" );
             return( this );
@@ -314,7 +314,7 @@
             this._suffixes = ")" + this._suffixes;
             
             this.add( ")|(?:" );
-            if(value) this.then( value );
+            if(value) this.sit( value );
             
             return( this );
         },

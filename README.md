@@ -26,7 +26,7 @@ Original: word, Pissix: wördi
 Original: anyOf, Pissix: mikäVaa  
 Original: range, Pissix: lössi  
 Original: addModifier, Pissix: uusSäätö  
-Original: removeModifier, Pissix: exäSäätö  
+Original: removeModifier, Pissix: endaaSäätö  
 Original: withAnyCase, Pissix: ihaSamaMikäKoko  
 Original: stopAtFirst, Pissix: ekastStoppi  
 Original: searchOneLine, Pissix: yhenRivinSöörtsi  
