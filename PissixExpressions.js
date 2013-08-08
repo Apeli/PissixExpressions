@@ -1,6 +1,6 @@
 /*!
- * VerbalExpressions JavaScript Library v0.1
- * https://github.com/jehna/VerbalExpressions
+ * PissixExpressions JavaScript Library v0.1
+ * https://github.com/Apeli/PissixExpressions
  *
  *
  * Released under the MIT license
@@ -16,42 +16,42 @@
 		var root = this;
 
     // I am the constructor function.
-    function VerbalExpression(){
-        var verbalExpression = Object.create( RegExp.prototype );
+    function PissixExpression(){
+        var pissixExpression = Object.create( RegExp.prototype );
         
         // Initialize 
-        verbalExpression = (RegExp.apply( verbalExpression, arguments ) || verbalExpression);
+        pissixExpression = (RegExp.apply( pissixExpression, arguments ) || pissixExpression);
      
         // Add all the class methods
-        VerbalExpression.injectClassMethods( verbalExpression );
+        PissixExpression.injectClassMethods( pissixExpression );
 
         // Return the new object.
-        return( verbalExpression );
+        return( pissixExpression );
     }
  
  
     // Define the static methods.
-    VerbalExpression.injectClassMethods = function( verbalExpression ){
+    PissixExpression.injectClassMethods = function( pissixExpression ){
  
         // Loop over all the prototype methods
-        for (var method in VerbalExpression.prototype){
+        for (var method in PissixExpression.prototype){
  
             // Make sure this is a local method.
-            if (VerbalExpression.prototype.hasOwnProperty( method )){
+            if (PissixExpression.prototype.hasOwnProperty( method )){
  
                 // Add the method
-                verbalExpression[ method ] = VerbalExpression.prototype[ method ];
+                pissixExpression[ method ] = PissixExpression.prototype[ method ];
  
             }
  
         }
         
-        return( verbalExpression );
+        return( pissixExpression );
  
     };
  
     // Define the class methods.
-    VerbalExpression.prototype = {
+    PissixExpression.prototype = {
         
         // Variables to hold the whole
         // expression construction in order
@@ -79,15 +79,17 @@
         },
         
         // Start and end of line functions
-        startOfLine: function( enable ) {
-            enable = ( enable != false );
+        // Original: startOfLine
+        rivinEga: function( enable ) {
+            enable = ( enable !== false );
             this._prefixes = enable ? "^" : "";
             this.add( "" );
             return( this );
         },
         
-        endOfLine : function( enable ) {
-            enable = ( enable != false );
+        // Original: endOfLine
+        rivinViga : function( enable ) {
+            enable = ( enable !== false );
             this._suffixes = enable ? "$" : "";
             this.add( "" );
             return( this );
@@ -98,7 +100,8 @@
         // So we can use the "normal"
         // behaviour to split the "sentences"
         // naturally.
-        then : function( value ) {
+        // Original: then
+        sit : function( value ) {
             value = this.sanitize( value );
             this.add( "(?:" + value + ")" );
             return( this );
@@ -108,38 +111,44 @@
         // "then" function, we create an alias
         // to be used as the first function
         // of the chain.
-        find : function( value ) {
+        // Original: find
+        eti : function( value ) {
             return( this.then( value ) );
         },
         
         // Maybe is used to add values with ?
-        maybe : function( value ) {
+        // Original: maybe
+        kait : function( value ) {
             value = this.sanitize(value);
             this.add( "(?:" + value + ")?" );
             return( this );
         },
         
         // Any character any number of times
-        anything : function() {
+        // Original: anything
+        ihaSama : function() {
             this.add( "(?:.*)" );
             return( this );
         },
         
         // Anything but these characters
-        anythingBut : function( value ) {
+        // Original: anythingBut
+        ihaSamaPaizi : function( value ) {
             value = this.sanitize( value );
             this.add( "(?:[^" + value + "]*)" );
             return( this );
         },
 
         // Any character at least one time
-        something : function() {
+        // Original: something
+        jotai : function() {
             this.add( "(?:.+)" );
             return( this );
         },
 
         // Any character at least one time except for these characters
-        somethingBut : function( value ) {
+        // Original: somethingBut
+        jotaiPaizi : function( value ) {
             value = this.sanitize( value );
             this.add( "(?:[^" + value + "]+)" );
             return( this );
@@ -150,7 +159,8 @@
         // give more logical flow if, for
         // example, we're doing multiple
         // replacements on one regexp.
-        replace : function( source, value ) {
+        // Original: replace
+        vaiha : function( source, value ) {
             source = source.toString();
             return source.replace( this, value );
         },
@@ -160,41 +170,47 @@
         /// characters                     ///
         
         // Line break
-        lineBreak : function() {
+        // Original: lineBreak
+        uusRivi : function() {
             this.add( "(?:(?:\\n)|(?:\\r\\n))" ); // Unix + windows CLRF
             return( this );
         },
         // And a shorthand for html-minded
-        br : function() {
+        //Original: br
+        breikki : function() {
             return this.lineBreak();
         },
         
         // Tab (duh?)
-        tab : function() {
+        //Original: tab
+        täbi : function() {
             this.add( "\\t" );
             return( this );
         },
         
         // Any alphanumeric
-        word : function() {
+        // Original: word
+        wördi : function() {
             this.add( "\\w+" );
             return( this );
         },
         
         // Any given character
-        anyOf : function( value ) {
+        // Original: anyOf
+        mikäVaa : function( value ) {
             value = this.sanitize(value);
             this.add( "["+ value +"]" );
             return( this );
         },
         
         // Shorthand
-        any : function( value ) {
-            return( this.anyOf( value ) );
-        },
+        // any : function( value ) {
+        //     return( this.anyOf( value ) );
+        // },
         
         // Usage: .range( from, to [, from, to ... ] )
-        range : function() {
+        // Original: range
+        lössi : function() {
             
             var value = "[";
             
@@ -218,23 +234,26 @@
         /// Modifiers      ///
         
         // Modifier abstraction
-        addModifier : function( modifier ) {
+        //Original: addModifier
+        uusSäätö : function( modifier ) {
             if( this._modifiers.indexOf( modifier ) == -1 ) {
                 this._modifiers += modifier;
             }
             this.add("");
             return( this );
         },
-        removeModifier : function( modifier ) {
+        //Original: removeModifier
+        exäSäätö : function( modifier ) {
             this._modifiers = this._modifiers.replace( modifier, "" );
             this.add("");
             return( this );
         },
         
         // Case-insensitivity modifier
-        withAnyCase : function( enable ) {
+        //Original: withAnyCase
+        ihaSamaMikäKoko : function( enable ) {
             
-            if(enable != false) this.addModifier( "i" );
+            if(enable !== false) this.addModifier( "i" );
             else this.removeModifier( "i" );
             
             this.add( "" );
@@ -245,9 +264,10 @@
         // Default behaviour is with "g" modifier,
         // so we can turn this another way around
         // than other modifiers
-        stopAtFirst : function( enable ) {
+        // Original: stopAtFirst
+        ekastStoppi : function( enable ) {
             
-            if(enable != false) this.removeModifier( "g" );
+            if(enable !== false) this.removeModifier( "g" );
             else this.addModifier( "g" );
             
             this.add( "" );
@@ -256,9 +276,10 @@
         },
         
         // Multiline, also reversed
-        searchOneLine : function( enable ) {
+        // Original: searchOneLine
+        yhenRivinSöörtsi : function( enable ) {
             
-            if(enable != false) this.removeModifier( "m" );
+            if(enable !== false) this.removeModifier( "m" );
             else this.addModifier( "m" );
             
             this.add( "" );
@@ -270,7 +291,8 @@
         
         /// Loops  ///
         
-        multiple : function( value ) {
+        //Original: multiple
+        mont : function( value ) {
             // Use expression or string
             value = value.source ? value.source : this.sanitize(value);
             switch(value.substr(-1)) {
@@ -285,7 +307,8 @@
         },
         
         // Adds alternative expressions
-        or : function( value ) {
+        // Original: or
+        tai : function( value ) {
             
             this._prefixes += "(?:";
             this._suffixes = ")" + this._suffixes;
@@ -297,7 +320,8 @@
         },
 
         //starts a capturing group
-        beginCapture : function() {
+        // Original: beginCapture
+        alotaKaappaa : function() {
             //add the end of the capture group to the suffixes for now so compilation continues to work
             this._suffixes += ")";
             this.add( "(", false );
@@ -306,7 +330,8 @@
         },
 
         //ends a capturing group
-        endCapture : function() {
+        // Original: endCapture
+        lopetaKaappaa : function() {
 						//remove the last parentheses from the _suffixes and add to the regex itself
             this._suffixes = this._suffixes.substring(0, this._suffixes.length - 1 );
             this.add( ")", true );
@@ -316,19 +341,19 @@
         
     };
 
-    function createVerbalExpression() {
-        return new VerbalExpression();
+    function createPissixExpression() {
+        return new PissixExpression();
     }
 
     // support both browser and node.js
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = createVerbalExpression;
+        module.exports = createPissixExpression;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(VerbalExpression);
+        define(PissixExpression);
     }
     else {
-        root.VerEx = createVerbalExpression;
+        root.PissixEx = createPissixExpression;
     }
  
 }).call();

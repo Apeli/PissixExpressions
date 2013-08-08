@@ -1,5 +1,5 @@
 test( "something", function() {
-    var testRegex = VerEx().something();
+    var testRegex = PissixEx().jotai();
     var testString;
 
     testString = "";
@@ -11,19 +11,19 @@ test( "something", function() {
 } );
 
 test( "anything", function() {
-    var testRegex = VerEx().startOfLine().anything();
+    var testRegex = PissixEx().rivinEga().ihaSama();
     var testString = "what";
     ok( testRegex.test( testString ), "Passes!" );
 } );
 
 test( "anythingBut", function() {
-    var testRegex = VerEx().startOfLine().anythingBut( "w" );
+    var testRegex = PissixEx().rivinEga().ihaSamaPaizi( "w" );
     var testString = "what";
     ok( testRegex.test( testString ), "starts with w" );
 } );
 
 test( "somethingBut", function() {
-    var testRegex = VerEx().somethingBut("a");
+    var testRegex = PissixEx().jotaiPaizi("a");
     var testString;
 
     testString = "";
@@ -38,8 +38,8 @@ test( "somethingBut", function() {
     ok( ! testRegex.test( testString ), "starts with a" );
 } );
 
-test( "startOfLine", function() {
-    var testRegex = VerEx().startOfLine().then( "a" );
+test( "rivinEga", function() {
+    var testRegex = PissixEx().rivinEga().sit( "a" );
     var testString;
 
     testString = "a";
@@ -50,8 +50,8 @@ test( "startOfLine", function() {
     ok( ! testRegex.test( testString ), "Doesn't start with a" );
 } );
 
-test( "endOfLine", function() {
-    var testRegex = VerEx().find( "a" ).endOfLine();
+test( "rivinViga", function() {
+    var testRegex = PissixEx().find( "a" ).rivinViga();
     var testString;
 
     testString = "a";
@@ -62,8 +62,8 @@ test( "endOfLine", function() {
     ok( ! testRegex.test( testString ), "Doesn't end with a" );
 } );
 
-test( "maybe", function() {
-    var testRegex = VerEx().startOfLine().then( "a" ).maybe( "b" );
+test( "kait", function() {
+    var testRegex = PissixEx().rivinEga().sit( "a" ).kait( "b" );
     var testString;
 
     testString = "acb";
@@ -74,8 +74,8 @@ test( "maybe", function() {
     ok( testRegex.test( testString ), "Maybe has a b after an a" );
 } );
 
-test( "anyOf", function() {
-    var testRegex = VerEx().startOfLine().then( "a" ).anyOf( "xyz" );
+test( "mikäVaa", function() {
+    var testRegex = PissixEx().rivinEga().sit( "a" ).mikäVaa( "xyz" );
     var testString;
 
     testString = "ay";
@@ -86,8 +86,8 @@ test( "anyOf", function() {
     ok( ! testRegex.test( testString ), "Doesn't have an x, y, or z after a" );
 } );
 
-test( "or", function() {
-    var testRegex = VerEx().startOfLine().then( "abc" ).or( "def" );
+test( "tai", function() {
+    var testRegex = PissixEx().rivinEga().sit( "abc" ).tai( "def" );
     var testString;
 
     testString = "defzzz";
@@ -98,11 +98,11 @@ test( "or", function() {
     ok( ! testRegex.test( testString ), "Doesn't start with abc or def" );
 } );
 
-test( "lineBreak", function() {
+test( "uusRivi", function() {
     var testRegex;
     var testString;
 
-    testRegex = VerEx().startOfLine().then( "abc" ).lineBreak().then( "def" );
+    testRegex = PissixEx().rivinEga().sit( "abc" ).uusRivi().sit( "def" );
     testString = "abc\r\ndef";
     ok( testRegex.test( testString ), "abc then line break then def" );
 
@@ -119,7 +119,7 @@ test( "br", function() {
     var testRegex;
     var testString;
 
-    testRegex = VerEx().startOfLine().then( "abc" ).lineBreak().then( "def" );
+    testRegex = PissixEx().rivinEga().sit( "abc" ).uusRivi().sit( "def" );
     testString = "abc\r\ndef";
     ok( testRegex.test( testString ), "abc then line break then def" );
 
@@ -132,11 +132,11 @@ test( "br", function() {
     ok( ! testRegex.test( testString ), "abc then line break then space then def" );
 } );
 
-test( "tab", function() {
+test( "täbi", function() {
     var testRegex;
     var testString;
 
-    testRegex = VerEx().startOfLine().tab().then( "abc" );
+    testRegex = PissixEx().rivinEga().täbi().sit( "abc" );
     testString = "\tabc";
     ok( testRegex.test( testString ), "tab then abc" );
 
@@ -145,15 +145,15 @@ test( "tab", function() {
     ok( ! testRegex.test( testString ), "no tab then abc" );
 } );
 
-test( "withAnyCase", function() {
+test( "ihaSamaMikäKoko", function() {
     var testRegex;
     var testString;
 
-    testRegex = VerEx().startOfLine().then( "a" );
+    testRegex = PissixEx().rivinEga().sit( "a" );
     testString = "A";
     ok( ! testRegex.test( testString ), "not case insensitive" );
 
-    testRegex = VerEx().startOfLine().then( "a" ).withAnyCase();
+    testRegex = PissixEx().rivinEga().sit( "a" ).ihaSamaMikäKoko();
     testString = "A";
     ok( testRegex.test( testString ), "case insensitive" );
 
@@ -162,15 +162,15 @@ test( "withAnyCase", function() {
     ok( testRegex.test( testString ), "case insensitive" );
 } );
 
-test( "searchOneLine", function() {
+test( "yhenRivinSöörtsi", function() {
     var testRegex;
     var testString;
 
-    testRegex = VerEx().startOfLine().then( "a" ).br().then( "b" ).endOfLine();
+    testRegex = PissixEx().rivinEga().sit( "a" ).breikki().sit( "b" ).rivinViga();
     testString = "a\nb";
     ok( testRegex.test( testString ), "b is on the second line" );
 
-    testRegex = VerEx().startOfLine().then( "a" ).br().then( "b" ).endOfLine().searchOneLine();
+    testRegex = PissixEx().rivinEga().sit( "a" ).breikki().sit( "b" ).rivinViga().yhenRivinSöörtsi();
     testString = "a\nb";
     ok( testRegex.test( testString ), "b is on the second line but we are only searching the first" );
 } );
