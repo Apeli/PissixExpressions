@@ -8,10 +8,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/Apeli/JSVerbalExpressions.git"
+		"url": "git://github.com/Apeli/PissixExpressions.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Apeli/JSVerbalExpressions/issues"
+		"url": "https://github.com/Apeli/PissixExpressions/issues"
 	},
 	"main": "PissixExpressions.js",
 	"license": "MIT",
