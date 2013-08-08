@@ -35,7 +35,7 @@ console.log( tester ); // Ouputs the actual expression used: /^(http)(s)?(\:\/\/
 
 ```javascript
 // Create a test string
-var replaceMe = "Onx sul heittää yhtää spadduu?";
+var replaceMe = "Onx sul heittää yhtää spadduu????";
 
 // Create an expression that seeks for word "spadduu"
 var expression = PissixEx().eti( "spadduu" );
@@ -43,7 +43,7 @@ var expression = PissixEx().eti( "spadduu" );
 // Execute the expression like a normal RegExp object
 var result = replaceMe.replace( expression, "ESsii" );
 
-alert( result ); // Outputs "Onx sul heittää yhtää ESsii?"
+alert( result ); // Outputs "Onx sul heittää yhtää ESsii????"
 ```
 
 ### Shorthand for string replace:
